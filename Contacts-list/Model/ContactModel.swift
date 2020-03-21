@@ -10,13 +10,13 @@ import UIKit
 
 class ContactModel {
     
-    var image: String
+    var image: UIImage
     var fullName: String
     var phoneNumber: String
     var city: String
     var group: Int
     
-    init(image: String, fullName: String, phoneNumber: String, city: String, group: Int) {
+    init(image: UIImage, fullName: String, phoneNumber: String, city: String, group: Int) {
         self.image = image
         self.fullName = fullName
         self.phoneNumber = phoneNumber

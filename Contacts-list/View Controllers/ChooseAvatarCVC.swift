@@ -18,7 +18,7 @@ class ChooseAvatarCVC: UICollectionViewController {
     @IBOutlet var myCollectionView: UICollectionView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
-    var avatarImageName = ""
+    var avatarImageName: UIImage?
 
     let avatarImageNames = ["avatar1", "avatar2", "avatar3",
                             "avatar4", "avatar5", "avatar6",
@@ -54,7 +54,7 @@ class ChooseAvatarCVC: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        avatarImageName = avatarImageNames[indexPath.row]
+        avatarImageName = UIImage(named: avatarImageNames[indexPath.row])
         doneButton.isEnabled = true
         
     }

@@ -18,9 +18,9 @@ class ContactsListScreenVC: UIViewController {
     
     
     var contacts: [ContactModel] = [
-        ContactModel(image: "avatar1", fullName: "Liza Brown", phoneNumber: "095-111-23-22", city: "New York", group: 2),
-        ContactModel(image: "avatar2", fullName: "Jack Smith", phoneNumber: "095-111-23-23", city: "Paris", group: 4),
-        ContactModel(image: "avatar3", fullName: "Eduard Petrov", phoneNumber: "095-111-23-24", city: "Odessa", group: 10)
+        ContactModel(image: UIImage(named: "avatar1")!, fullName: "Liza Brown", phoneNumber: "095-111-23-22", city: "New York", group: 2),
+        ContactModel(image: UIImage(named: "avatar2")!, fullName: "Jack Smith", phoneNumber: "095-111-23-23", city: "Paris", group: 4),
+        ContactModel(image: UIImage(named: "avatar3")!, fullName: "Eduard Petrov", phoneNumber: "095-111-23-24", city: "Odessa", group: 10)
         
     ]
     
@@ -80,12 +80,14 @@ extension ContactsListScreenVC: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as! ContactCell
         
-        cell.contactCity.text = contacts[indexPath.row].city
-        cell.contactFullName.text = contacts[indexPath.row].fullName
-        cell.contactGroup.text = "Group: \(contacts[indexPath.row].group)"
-        cell.contactPhoneNumber.text = contacts[indexPath.row].phoneNumber
+        let contact = contacts[indexPath.row]
         
-        cell.contactImageView.image = UIImage(named: contacts[indexPath.row].image)
+        cell.contactCity.text = contact.city
+        cell.contactFullName.text = contact.fullName
+        cell.contactGroup.text = "Group: \(contact.group)"
+        cell.contactPhoneNumber.text = contact.phoneNumber
+        
+        cell.contactImageView.image = contact.image
         cell.contactImageView.layer.cornerRadius = cell.contactImageView.frame.size.height / 2
         cell.contactImageView.clipsToBounds = true
         

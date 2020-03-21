@@ -26,7 +26,7 @@ class ContactDetailsVC: UIViewController {
     }
     
     func setUI () {
-        contactImageView.image = UIImage(named: contact!.image)    //contact?.image
+        contactImageView.image = contact?.image
         contactNameLabel.text = contact?.fullName
         contactPhoneNumber.text = contact?.phoneNumber
         contactCity.text = contact?.city

@@ -11,7 +11,7 @@ import UIKit
 class AddNewContactTVC: UITableViewController {
     
     var contact: ContactModel?
-    var contactAvatarImageName = ""
+    var contactAvatarImageName = #imageLiteral(resourceName: "Photo")
     
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var phoneNumberField: UITextField!
@@ -50,10 +50,28 @@ class AddNewContactTVC: UITableViewController {
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         
-        let avatarStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let avatarVC = avatarStoryboard.instantiateViewController(withIdentifier: "ChooseAvatarCVC") as! ChooseAvatarCVC
-        navigationController?.pushViewController(avatarVC, animated: true)
         
+        let actionSheet = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+        
+        let photo = UIAlertAction(title: "Photo Library", style: .default) { _ in
+            self.chooseImagePicker(source: .photoLibrary)
+        }
+        
+        let avatarMenu = UIAlertAction(title: "Avatar Library", style: .default) { _ in
+            let avatarStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let avatarVC = avatarStoryboard.instantiateViewController(withIdentifier: "ChooseAvatarCVC") as! ChooseAvatarCVC
+            self.navigationController?.pushViewController(avatarVC, animated: true)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        actionSheet.addAction(photo)
+        actionSheet.addAction(avatarMenu)
+        actionSheet.addAction(cancel)
+        
+        present(actionSheet, animated: true, completion: nil)
     }
     
     
@@ -107,9 +125,9 @@ class AddNewContactTVC: UITableViewController {
         
         guard let chooseAvatarVC = sender.source as? ChooseAvatarCVC else { return }
         
-        contactAvatarImageName = chooseAvatarVC.avatarImageName
+        contactAvatarImageName = chooseAvatarVC.avatarImageName ?? UIImage(named: "avatar1")!
         
-        avatarImage.image = UIImage(named: contactAvatarImageName)
+        avatarImage.image = contactAvatarImageName
         avatarImage.backgroundColor = .white
         myTableView.reloadData()
     }
@@ -117,7 +135,7 @@ class AddNewContactTVC: UITableViewController {
     
 }
 
-
+//MARK: - Group number picker
 extension AddNewContactTVC: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -153,5 +171,37 @@ extension AddNewContactTVC: UITextFieldDelegate {
         view.endEditing(true)
     }
     
+}
+
+//MARK: - Work with image
+extension AddNewContactTVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func chooseImagePicker(source: UIImagePickerController.SourceType) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(source) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = source
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        avatarImage.image = info[.editedImage] as? UIImage
+        avatarImage.contentMode = .scaleAspectFill
+        avatarImage.clipsToBounds = true
+        
+        if let chosenImage = info[.editedImage] as? UIImage {
+            contactAvatarImageName = chosenImage
+        }
+        
+ 
+        print(contactAvatarImageName)
+        
+        dismiss(animated: true, completion: nil)
+    }
 }
 
