@@ -40,13 +40,15 @@ class AddNewContactTVC: UITableViewController {
         
         setNumPicker(minNum: 1, maxNum: 100)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(doneTapped))
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         avatarImage.isUserInteractionEnabled = true
         avatarImage.addGestureRecognizer(tapGestureRecognizer)
         
     }
+    
+    // Choosing image - from photo library or avatar library
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         
@@ -62,6 +64,9 @@ class AddNewContactTVC: UITableViewController {
         let avatarMenu = UIAlertAction(title: "Avatar Library", style: .default) { _ in
             let avatarStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let avatarVC = avatarStoryboard.instantiateViewController(withIdentifier: "ChooseAvatarCVC") as! ChooseAvatarCVC
+            
+            avatarVC.selectionDelegate = self
+            
             self.navigationController?.pushViewController(avatarVC, animated: true)
         }
         
@@ -75,6 +80,7 @@ class AddNewContactTVC: UITableViewController {
     }
     
     
+    // done button tapped, checking textfields completion, alerting user in case of non-completion
     
     @objc func doneTapped() {
         
@@ -113,6 +119,8 @@ class AddNewContactTVC: UITableViewController {
     }
     
     
+    // seting group number picker
+    
     func setNumPicker(minNum: Int, maxNum: Int) {
         for num in minNum...maxNum {
             groupNumberPickerData.append(num)
@@ -121,15 +129,9 @@ class AddNewContactTVC: UITableViewController {
     }
     
     
-    @IBAction func unwindToAddNewContact(_ sender: UIStoryboardSegue) {
-        
-        guard let chooseAvatarVC = sender.source as? ChooseAvatarCVC else { return }
-        
-        contactAvatarImageName = chooseAvatarVC.avatarImageName ?? UIImage(named: "avatar1")!
-        
-        avatarImage.image = contactAvatarImageName
-        avatarImage.backgroundColor = .white
-        myTableView.reloadData()
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        view.endEditing(true)
     }
     
     
@@ -156,6 +158,7 @@ extension AddNewContactTVC: UIPickerViewDelegate, UIPickerViewDataSource {
 }
 
 
+//MARK: - Text Field Delegate
 
 extension AddNewContactTVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -165,15 +168,12 @@ extension AddNewContactTVC: UITextFieldDelegate {
         return true
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        
-        view.endEditing(true)
-    }
     
 }
 
-//MARK: - Work with image
+
+//MARK: - Image Picker Controller Delegate
+
 extension AddNewContactTVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func chooseImagePicker(source: UIImagePickerController.SourceType) {
@@ -205,3 +205,15 @@ extension AddNewContactTVC: UIImagePickerControllerDelegate, UINavigationControl
     }
 }
 
+
+//MARK: - Choose Avatar Delegate
+
+extension AddNewContactTVC: ChooseAvatarDelegate {
+    func didChooseAvatar(avatar: UIImage) {
+        avatarImage.image = avatar
+        contactAvatarImageName = avatar
+        avatarImage.backgroundColor = .white
+    }
+    
+    
+}

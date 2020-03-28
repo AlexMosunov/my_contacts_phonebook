@@ -10,61 +10,57 @@ import UIKit
 
 private let reuseIdentifier = "AvatarCell"
 
+protocol ChooseAvatarDelegate {
+    func didChooseAvatar(avatar: UIImage)
+}
+
 class ChooseAvatarCVC: UICollectionViewController {
     
     var contact: ContactModel?
+    
+    var selectionDelegate: ChooseAvatarDelegate!
  
     
     @IBOutlet var myCollectionView: UICollectionView!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     
     var avatarImageName: UIImage?
-
-    let avatarImageNames = ["avatar1", "avatar2", "avatar3",
-                            "avatar4", "avatar5", "avatar6",
-                            "avatar7", "avatar8", "avatar9",
-                            "avatar10", "avatar11", "avatar12",
-                            "avatar13", "avatar14", "avatar15",
-                            "avatar16", "avatar17", "avatar18", "avatar19"]
+    let avatarImage = AvatarImage()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        doneButton.isEnabled = false
-        
     }
-
+    
 
 
     // MARK: UICollectionViewDataSource
 
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return avatarImageNames.count
+        return avatarImage.avatarImageNames.count
         
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AvatarCell
     
-        cell.avatarImageView.image = UIImage(named: avatarImageNames[indexPath.row])
+        cell.avatarImageView.image = UIImage(named: avatarImage.avatarImageNames[indexPath.row])
     
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        avatarImageName = UIImage(named: avatarImageNames[indexPath.row])
-        doneButton.isEnabled = true
+        if let chosenAvatarImage = UIImage(named: avatarImage.avatarImageNames[indexPath.row]) {
+            selectionDelegate.didChooseAvatar(avatar: chosenAvatarImage)
+        }
+        
+        navigationController?.popViewController(animated: true)
         
     }
     
-    
-    @IBAction func doneTapped(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    
-
-
 }
+
+

@@ -8,15 +8,19 @@
 
 import UIKit
 
+
+
 protocol ContactListScreenDelegate {
     func update(contact: ContactModel)
 }
+
 
 class ContactsListScreenVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     
+    // Contacts Model array with lisr of 3 initial contacts for demo purposes
     var contacts: [ContactModel] = [
         ContactModel(image: UIImage(named: "avatar1")!, fullName: "Liza Brown", phoneNumber: "095-111-23-22", city: "New York", group: 2),
         ContactModel(image: UIImage(named: "avatar2")!, fullName: "Jack Smith", phoneNumber: "095-111-23-23", city: "Paris", group: 4),
@@ -26,19 +30,22 @@ class ContactsListScreenVC: UIViewController {
     
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         tableView.dataSource = self
         tableView.delegate = self
         
-        super.viewDidLoad()
-        
+        // adding navigation bar buttons
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(filterTapped))
     }
     
+    // addTapped bar button
     @objc func addTapped() {
         performSegue(withIdentifier: "goToAddContact", sender: nil)
     }
     
+    // filterTapped bar button - filters alphabetically
     @objc func filterTapped() {
         
         let sortedContacts = contacts.sorted{ $0.fullName < $1.fullName }
@@ -49,6 +56,7 @@ class ContactsListScreenVC: UIViewController {
     }
     
     
+    // segues preparation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "goToDetails" {
@@ -67,6 +75,8 @@ class ContactsListScreenVC: UIViewController {
     
 }
 
+//MARK: - table view delegate & datasource
+
 extension ContactsListScreenVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,7 +86,6 @@ extension ContactsListScreenVC: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let contact = contacts[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as! ContactCell
         
@@ -91,7 +100,6 @@ extension ContactsListScreenVC: UITableViewDataSource, UITableViewDelegate {
         cell.contactImageView.layer.cornerRadius = cell.contactImageView.frame.size.height / 2
         cell.contactImageView.clipsToBounds = true
         
-//        cell.setContact(contact: contact)
         
         return cell
     }
@@ -128,6 +136,8 @@ extension ContactsListScreenVC: UITableViewDataSource, UITableViewDelegate {
     
 }
 
+//MARK: - Contact List Screen Delegate
+
 extension ContactsListScreenVC: ContactListScreenDelegate {
     
     func update(contact: ContactModel) {
@@ -138,6 +148,5 @@ extension ContactsListScreenVC: ContactListScreenDelegate {
         tableView.endUpdates()
 
     }
-    
-    
+
 }

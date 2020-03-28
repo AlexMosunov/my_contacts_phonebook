@@ -15,10 +15,5 @@ class AvatarCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-       
-        
-        let grayView = UIView(frame: bounds)
-        grayView.backgroundColor = .gray
-        self.selectedBackgroundView = grayView
     }
 }

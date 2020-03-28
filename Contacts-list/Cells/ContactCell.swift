@@ -18,7 +18,6 @@ class ContactCell: UITableViewCell {
     @IBOutlet weak var contactGroup: UILabel!
     
     
-    
 //    func setContact(contact: ContactModel) {
 //        contactImageView.image = contact.image
 //        contactFullName.text = contact.fullName

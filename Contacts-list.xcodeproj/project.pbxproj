@@ -16,6 +16,7 @@
 		9A69C5E42415219200E254AC /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A69C5E32415219200E254AC /* ContactCell.swift */; };
 		9A69C5E6241522DF00E254AC /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A69C5E5241522DF00E254AC /* ContactModel.swift */; };
 		9A69C5E8241537B800E254AC /* ContactDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A69C5E7241537B800E254AC /* ContactDetailsVC.swift */; };
+		9AC748B7242E7BF8003AD5A9 /* AvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC748B6242E7BF8003AD5A9 /* AvatarImage.swift */; };
 		9AC9BB4A2424DB67004A147C /* ChooseAvatarCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC9BB492424DB67004A147C /* ChooseAvatarCVC.swift */; };
 		9AC9BB4C2424DC1B004A147C /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC9BB4B2424DC1B004A147C /* AvatarCell.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		9A69C5E32415219200E254AC /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		9A69C5E5241522DF00E254AC /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		9A69C5E7241537B800E254AC /* ContactDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsVC.swift; sourceTree = "<group>"; };
+		9AC748B6242E7BF8003AD5A9 /* AvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImage.swift; sourceTree = "<group>"; };
 		9AC9BB492424DB67004A147C /* ChooseAvatarCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAvatarCVC.swift; sourceTree = "<group>"; };
 		9AC9BB4B2424DC1B004A147C /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				9A69C5E5241522DF00E254AC /* ContactModel.swift */,
+				9AC748B6242E7BF8003AD5A9 /* AvatarImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				9A69C5E8241537B800E254AC /* ContactDetailsVC.swift in Sources */,
 				9AC9BB4C2424DC1B004A147C /* AvatarCell.swift in Sources */,
 				9A69C5E42415219200E254AC /* ContactCell.swift in Sources */,
+				9AC748B7242E7BF8003AD5A9 /* AvatarImage.swift in Sources */,
 				9A69C5E024151D6500E254AC /* ContactsListScreenVC.swift in Sources */,
 				9AC9BB4A2424DB67004A147C /* ChooseAvatarCVC.swift in Sources */,
 				9A69C5CC24151CCF00E254AC /* AppDelegate.swift in Sources */,

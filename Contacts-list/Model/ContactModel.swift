@@ -24,29 +24,5 @@ class ContactModel {
         self.group = group
     }
     
-    let avatarImageNames = ["avatar1",
-                            "avatar2",
-                            "avatar3",
-                            "avatar1",
-                            "avatar2",
-                            "avatar3",
-                            "avatar1",
-                            "avatar2",
-                            "avatar3",
-                            "avatar1",
-                            "avatar2",
-                            "avatar3",
-                            "avatar1",
-                            "avatar2",
-                            "avatar3",
-                            "avatar1",
-                            "avatar2",
-                            "avatar3",
-                            "avatar1",
-                            "avatar2",
-                            "avatar3",
-                            "avatar1",
-                            "avatar2",
-                            "avatar3"]
     
 }

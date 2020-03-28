@@ -126,7 +126,7 @@
                         <sections>
                             <tableViewSection id="5lD-IZ-oRb">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="120" id="l0K-IW-SHb">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="120" id="l0K-IW-SHb">
                                         <rect key="frame" x="0.0" y="28" width="414" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l0K-IW-SHb" id="1Sk-KH-3c4">
@@ -148,7 +148,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="VDw-bV-EC7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="80" id="VDw-bV-EC7">
                                         <rect key="frame" x="0.0" y="148" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VDw-bV-EC7" id="V1r-jD-HdH">
@@ -171,7 +171,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="fTU-Wz-Bln">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="80" id="fTU-Wz-Bln">
                                         <rect key="frame" x="0.0" y="228" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fTU-Wz-Bln" id="GGq-TC-LbV">
@@ -194,7 +194,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="PLn-NY-ynm">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="80" id="PLn-NY-ynm">
                                         <rect key="frame" x="0.0" y="308" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PLn-NY-ynm" id="nL2-bg-L4q">
@@ -217,7 +217,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="DGB-wG-U5K">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="200" id="DGB-wG-U5K">
                                         <rect key="frame" x="0.0" y="388" width="414" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DGB-wG-U5K" id="0iT-jo-LxX">
@@ -321,21 +321,12 @@
                             <outlet property="delegate" destination="e2D-Qm-3UN" id="wHH-Hv-zeH"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="Pa8-t4-80l">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="uJc-mS-At1">
-                            <connections>
-                                <action selector="doneTapped:" destination="e2D-Qm-3UN" id="2Yx-KC-1IF"/>
-                                <segue destination="Uyn-Vk-c5X" kind="unwind" unwindAction="unwindToAddNewContact:" id="HWq-xy-Vhg"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Pa8-t4-80l"/>
                     <connections>
-                        <outlet property="doneButton" destination="uJc-mS-At1" id="r7a-0l-FqK"/>
                         <outlet property="myCollectionView" destination="vfi-NQ-W0c" id="NHo-oA-BHQ"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GY3-C8-hcU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="Uyn-Vk-c5X" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2826" y="-554"/>
         </scene>
@@ -464,6 +455,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Photo" width="195" height="196"/>
+        <image name="Photo" width="292" height="293.5"/>
     </resources>
 </document>
